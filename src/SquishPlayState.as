@@ -22,7 +22,30 @@ package
 		
 		override public function update():void 
 		{
+			if (FlxG.keys.justPressed("ESCAPE") || FlxG.keys.justPressed("P"))
+			{
+				this.setSubState(new PauseMenu(), onMenuClosed);
+			}
+			
+			if (FlxG.keys.justPressed("I"))
+			{
+				this.setSubState(new Inventory());
+			}
 			super.update();		
+		}
+		
+		protected function onMenuClosed(state:FlxSubState, result:String):void
+		{
+			if (result == PauseMenu.QUIT_GAME)
+			{
+				//Exit to main menu
+				FlxG.fade(0xff000000, 1.5, quit);
+			}
+		}
+		
+		protected function quit():void
+		{
+			FlxG.switchState(new MainMenu());
 		}
 		
 		protected function hitEnemy(player:FlxObject, enemy:FlxObject):void

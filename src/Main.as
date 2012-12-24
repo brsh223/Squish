@@ -13,7 +13,7 @@ package
 		
 		public function Main() 
 		{
-			super(320, 240, PlayState1, 2, 30, 30);
+			super(320, 240, MainMenu, 2, 30, 30);
 		}
 		
 	}
